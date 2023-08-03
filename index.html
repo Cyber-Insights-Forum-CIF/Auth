@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+:root {
+    --accent: #7f54b3;
+    --white: #fff;
+    --dark: #302e35;
+    --darker: #28262c;
+    --radius: 0.35rem;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    background-color: var(--accent);
+
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.clock {
+    background-color: var(--darker);
+    padding: 2.5rem 2rem 1.5rem;
+    border-radius: var(--radius);
+}
+
+.time {
+    font-size: 3rem;
+    font-weight: 600;
+
+    display: flex;
+    gap: 1rem;
+
+    position: relative;
+}
+
+.time::after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: var(--darker);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hour,
+.minute,
+.second {
+    background-color: var(--dark);
+    padding: 1rem 0.75rem;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 4.6rem;
+}
+
+.date {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+</style>
+
+<body>
+
+    <body>
+        <div class="clock">
+            <div class="time">
+                <div class="hour"></div>
+                <div class="minute"></div>
+                <div class="second"></div>
+            </div>
+            <div class="date"></div>
+        </div>
+    </body>
+
+    <script>
+        const hourEl = document.querySelector(".hour");
+        const minuteEl = document.querySelector(".minute");
+        const secondEl = document.querySelector(".second");
+        const dateEl = document.querySelector(".date");
+
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+        let months = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Aug",
+            "Oct",
+            "Nov",
+            "Dec"
+        ];
+
+
+
+
+
+
+    const displayClock = () => {
+            const now = new Date();
+            const month = now.getMonth();
+            const day = now.getDate();
+            const dayOfWeek = now.getDay();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            dateEl.textContent = `${days[dayOfWeek]} ${day} ${months[month]}`;
+            hourEl.textContent = String(hours).padStart(2, "0");
+            minuteEl.textContent = String(minutes).padStart(2, "0");
+            secondEl.textContent = String(seconds).padStart(2, "0");
+        };
+
+        setInterval(displayClock, 1000);
+       </script>
+</body >
+
+</html >
